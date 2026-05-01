@@ -1,35 +1,100 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Movie Recommender</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 AI Movie Recommender</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<h1>Movie Recommendation System</h1>
+    <!-- Header -->
+    <header>
+        <div class="logo">🎬 CineAI</div>
+        <p class="tagline">Your Personal AI Movie Guide</p>
+    </header>
 
-<form action="/recommend" method="post">
-   <label>Genre:</label>
-<select name="genre">
-    <option>Comedy</option>
-    <option>Action</option>
-    <option>Romance</option>
-    <option>Horror</option>
-    <option>Thriller</option>
-</select>
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Find Your Perfect Movie</h1>
+        <p>Tell us your mood and we'll recommend the best movies for you</p>
+    </section>
 
-<br><br>
+    <!-- Recommendation Form -->
+    <section class="form-section">
+        <div class="card">
+            <h2>🎯 Get Recommendations</h2>
 
-<label>Language:</label>
-<select name="language">
-    <option>Hindi</option>
-    <option>English</option>
-</select>
+            <form action="/recommend" method="post">
 
-<br><br>
+                <div class="form-group">
+                    <label>🎭 Select Genre</label>
+                    <div class="genre-buttons">
+                        <input type="radio" name="genre" id="action" value="Action" required>
+                        <label for="action" class="genre-btn">💥 Action</label>
 
-    <button type="submit">Recommend</button>
-</form>
+                        <input type="radio" name="genre" id="comedy" value="Comedy">
+                        <label for="comedy" class="genre-btn">😂 Comedy</label>
+
+                        <input type="radio" name="genre" id="romance" value="Romance">
+                        <label for="romance" class="genre-btn">❤️ Romance</label>
+
+                        <input type="radio" name="genre" id="horror" value="Horror">
+                        <label for="horror" class="genre-btn">👻 Horror</label>
+
+                        <input type="radio" name="genre" id="thriller" value="Thriller">
+                        <label for="thriller" class="genre-btn">🔪 Thriller</label>
+
+                        <input type="radio" name="genre" id="scifi" value="Sci-Fi">
+                        <label for="scifi" class="genre-btn">🚀 Sci-Fi</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>🌐 Select Language</label>
+                    <div class="lang-buttons">
+                        <input type="radio" name="language" id="hindi" value="Hindi" required>
+                        <label for="hindi" class="lang-btn">🇮🇳 Hindi</label>
+
+                        <input type="radio" name="language" id="english" value="English">
+                        <label for="english" class="lang-btn">🇺🇸 English</label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    🎬 Find Movies
+                </button>
+
+            </form>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="feature-card">
+            <div class="icon">🤖</div>
+            <h3>AI Powered</h3>
+            <p>Smart recommendations using machine learning</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">💬</div>
+            <h3>Chat Assistant</h3>
+            <p>Ask our Watson chatbot for suggestions</p>
+        </div>
+        <div class="feature-card">
+            <div class="icon">⚡</div>
+            <h3>Instant Results</h3>
+            <p>Get recommendations in seconds</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>Made with ❤️ using Flask + IBM Watson AI</p>
+    </footer>
+
+    
 <script>
   window.watsonAssistantChatOptions = {
     integrationID: "8a7743c6-c319-4b22-bb73-f5bb6d639d02", // The ID of this integration.

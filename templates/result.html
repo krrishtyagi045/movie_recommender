@@ -1,19 +1,61 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Recommended Movies</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎬 Movie Results</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
 
-<h2>Recommended Movies</h2>
+    <header>
+        <div class="logo">🎬 CineAI</div>
+        <p class="tagline">Your Personal AI Movie Guide</p>
+    </header>
 
-<ul>
-    {% for movie in movies %}
-        <li>{{ movie }}</li>
-    {% endfor %}
-</ul>
+    <section class="results-section">
+        <h2>🎯 Recommended Movies For You</h2>
 
-<a href="/">Go Back</a>
+        {% if movies and movies[0] != "No movies found" %}
+            <div class="movie-grid">
+                {% for movie in movies %}
+                <div class="movie-card">
+                    <div class="movie-icon">🎬</div>
+                    <h3>{{ movie }}</h3>
+                    <div class="stars">⭐⭐⭐⭐⭐</div>
+                    <p>Recommended by CineAI</p>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <div class="no-result">
+                <div class="sad-icon">😔</div>
+                <h3>No movies found</h3>
+                <p>Try a different genre or language</p>
+            </div>
+        {% endif %}
 
+        <a href="/" class="back-btn">🔙 Search Again</a>
+    </section>
+
+    <footer>
+        <p>Made with ❤️ using Flask + IBM Watson AI</p>
+    </footer>
+
+    
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "8a7743c6-c319-4b22-bb73-f5bb6d639d02", // The ID of this integration.
+    region: "https://integrations.au-syd.assistant.watson.appdomain.cloud", // The region your integration is hosted in.
+    serviceInstanceID: "31c1455a-4b7b-4a34-a597-439d06bc532b", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
 </body>
 </html>
