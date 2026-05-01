@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Movie Recommender</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<h1>Movie Recommendation System</h1>
+
+<form action="/recommend" method="post">
+   <label>Genre:</label>
+<select name="genre">
+    <option>Comedy</option>
+    <option>Action</option>
+    <option>Romance</option>
+    <option>Horror</option>
+    <option>Thriller</option>
+</select>
+
+<br><br>
+
+<label>Language:</label>
+<select name="language">
+    <option>Hindi</option>
+    <option>English</option>
+</select>
+
+<br><br>
+
+    <button type="submit">Recommend</button>
+</form>
+<script>
+  window.watsonAssistantChatOptions = {
+    integrationID: "e7beb2a4-d9b5-419f-acdb-3ece51d612db", // The ID of this integration.
+    region: "https://integrations.au-syd.assistant.watson.appdomain.cloud", // The region your integration is hosted in.
+    serviceInstanceID: "31c1455a-4b7b-4a34-a597-439d06bc532b", // The ID of your service instance.
+    onLoad: async (instance) => { await instance.render(); }
+  };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/versions/" + (window.watsonAssistantChatOptions.clientVersion || 'latest') + "/WatsonAssistantChatEntry.js";
+    document.head.appendChild(t);
+  });
+</script>
+</body>
+</html>
