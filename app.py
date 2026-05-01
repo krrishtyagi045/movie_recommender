@@ -2,13 +2,17 @@ from flask import Flask, render_template, request, jsonify
 import pandas as pd
 from ibm_watson import AssistantV2
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from dotenv import load_dotenv
+import os
+
+load_dotenv()
 
 app = Flask(__name__)
 
-# IBM Watson Configuration
-API_KEY = '09TOJfmxm9RweKrZV-CG9TF71QHOhzAXFrwntNsAfS_0'
-SERVICE_URL = 'https://api.au-syd.assistant.watson.cloud.ibm.com/instances/31c1455a-4b7b-4a34-a597-439d06bc532bL'
-ASSISTANT_ID = '54bfc5a8-69c8-4282-95de-c5e91b2e3e73'
+# IBM Watson Configuration (now hidden)
+API_KEY = os.getenv('IBM_API_KEY')
+SERVICE_URL = os.getenv('IBM_SERVICE_URL')
+ASSISTANT_ID = os.getenv('IBM_ASSISTANT_ID')
 
 authenticator = IAMAuthenticator(API_KEY)
 assistant = AssistantV2(
